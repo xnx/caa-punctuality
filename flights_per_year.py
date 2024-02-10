@@ -1,6 +1,7 @@
 from pathlib import Path
 import glob
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # The local directory in which the downloaded CSV files are saved.
 DATA_DIR = Path("data")
@@ -28,7 +29,6 @@ grouped_by_month = df.groupby('date')
 flights_per_month = grouped_by_month['number_flights_matched'].sum()
 print(flights_per_month)
 
-import matplotlib.pyplot as plt
 fig, ax = plt.subplots()
 ax.bar(flights_per_month.index, flights_per_month.values, width=20)
 ax.xaxis_date()
